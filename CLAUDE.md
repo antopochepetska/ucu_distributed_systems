@@ -46,7 +46,7 @@ Testing section for Iteration 3 in the spec is "TBD".
 ## Repository layout
 
 - `iteration0-echo/`: standalone warm-up (Iteration 0), not reused later.
-- `replicated-log/` (to be created): single codebase evolved through Iterations 1–3. Each finished iteration is marked with a git tag (`iteration-1`, `iteration-2`, `iteration-3`) and described in `replicated-log/CHANGELOG.md`.
+- `replicated-log/`: single codebase evolved through Iterations 1–3. Each finished iteration is marked with a git tag (`iteration-1`, `iteration-2`, `iteration-3`) and described in `replicated-log/CHANGELOG.md`.
 
 ## Work breakdown
 
@@ -63,16 +63,16 @@ Source legend:
 - [ ] 💡 **[suggested]** Project layout: `master/`, `secondary/`, shared `transport/` abstraction, `tests/`.
 
 ### 1. Iteration 1
-- [ ] Master → Secondary replication with ACK over any RPC (HTTP/REST, gRPC, sockets…).
-  - 💡 **[suggested]** Shared `Transport` interface (`replicate(msg) -> ACK`) with a real impl and the mocked impl, so nodes are testable in-process.
-- [ ] Master node: in-memory log, `POST` append, `GET` list, replicate to all Secondaries **in parallel**, respond only after ACKs from all.
-- [ ] Secondary node: in-memory log, ACK replicated msgs, `GET` list, artificial delay/sleep.
+- [ ] Master → Secondary replication with ACK over any RPC (HTTP/REST, gRPC, sockets…). *Mock done; HTTP transport pending.*
+  - [x] 💡 **[suggested]** Shared `Transport` interface (`replicate(msg) -> ACK`) with a real impl and the mocked impl, so nodes are testable in-process.
+- [ ] Master node: in-memory log, `POST` append, `GET` list, replicate to all Secondaries **in parallel**, respond only after ACKs from all. *Logic done (`MasterNode`); HTTP endpoints pending.*
+- [ ] Secondary node: in-memory log, ACK replicated msgs, `GET` list, artificial delay/sleep. *Logic done (`SecondaryNode`); HTTP endpoints pending.*
   - 💡 **[suggested]** Make the delay configurable via env var.
-- [ ] Logging on both nodes.
+- [x] Logging on both nodes.
 - [ ] Master and Secondaries run in Docker.
   - 💡 **[suggested]** `docker-compose.yml` (M + 2 S), Secondary addresses passed to Master via env vars.
-- [ ] Test harness `MockedTransport` with `setDelay` / `removeDelay`; `MasterNode` / `SecondaryNode` usable from tests.
-- [ ] Integration tests: replication is parallel, Master waits for all ACKs (scenario from spec).
+- [x] Test harness `MockedTransport` with `setDelay` / `removeDelay`; `MasterNode` / `SecondaryNode` usable from tests.
+- [x] Integration tests: replication is parallel, Master waits for all ACKs (scenario from spec).
 
 ### 2. Iteration 2
 - [ ] POST accepts write concern `w`; reply after `w-1` Secondary ACKs; remaining Secondaries still get the msg (async).
