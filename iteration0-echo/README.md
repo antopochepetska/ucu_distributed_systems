@@ -19,13 +19,14 @@ python3.14 -m venv .venv          # brew install python@3.14
 # terminal 2: client
 .venv/bin/python client.py "hello"      # one message
 .venv/bin/python client.py              # interactive, empty line quits
+
 curl -X POST localhost:8000/echo -H 'Content-Type: application/json' -d '{"message":"hi"}'
 ```
 
 ## Tests
 
 ```bash
-.venv/bin/pytest
+.venv/bin/pytest -v
 ```
 
 ## Docker (optional)

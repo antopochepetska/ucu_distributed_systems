@@ -46,7 +46,7 @@ Testing section for Iteration 3 in the spec is "TBD".
 ## Repository layout
 
 - `iteration0-echo/`: standalone warm-up (Iteration 0), not reused later.
-- `replicated-log/` (to be created): single codebase evolved through Iterations 1–3. Each finished iteration is marked with a git tag (`iteration-1`, `iteration-2`, `iteration-3`) and described in `replicated-log/CHANGELOG.md`.
+- `replicated-log/` (to be created): single codebase evolved through Iterations 1–3. Each iteration is developed on its own branch (`iteration-1`, `iteration-2`, `iteration-3`), each started from the previous one, and described in `replicated-log/CHANGELOG.md`. `main` holds only prep work (spec, Iteration 0, this file).
 
 ## Work breakdown
 
