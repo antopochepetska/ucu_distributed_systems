@@ -1,7 +1,8 @@
 # Changelog
 
-Each iteration is developed on its own branch (`iteration-N`), merged to `main`,
-and tagged `iteration-N`.
+Each iteration is developed on its own branch (`iteration-N`), started from the
+previous iteration's branch. `main` holds only prep work; iteration branches are
+not merged back into it.
 
 ## Iteration 1: blocking replication (in progress)
 
